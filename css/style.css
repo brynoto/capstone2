@@ -1,0 +1,59 @@
+* {
+	font-family: 'Lato', sans-serif;
+	margin: 0;
+	padding: 0;
+	color: black;
+
+}
+
+.col-md-3 {
+	/*border: 2px solid black;*/
+	margin-bottom: 10px;
+
+}
+
+.img-thumb {
+	margin: auto;
+	width: auto;
+	height: 150px;
+	/*padding: 10px;*/
+	overflow: hidden;
+
+}
+
+img.details {
+	width: 100%;
+	margin: 15px auto;
+
+}
+
+h5 {
+	text-align: center;
+	margin: auto;
+	height: 50px;
+}
+
+
+.header-wrapper {
+	position: relative;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	height: 600px;
+	background-image: url(../img/header.png);
+	background-repeat: no-repeat;
+	background-size: 100% 700px;
+
+}
+
+.nav-link {
+	color: black;
+}
+
+h3 {
+	color: black;
+}
+
+#navbar {
+	color: black;
+}
