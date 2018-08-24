@@ -57,3 +57,7 @@ h3 {
 #navbar {
 	color: black;
 }
+
+ul.navbar-right {
+	margin-left: 150px;
+}

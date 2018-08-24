@@ -15,7 +15,10 @@ function get_content() { ?>
 <div class="container-fluid">
   <div class="row">
   <!-- left sidebar -->
-    <div class="col">Left Sidebar</div>  
+    <div class="col">
+     <h3>Categories</h3>
+       
+    </div>  
       
     <!-- main content  -->
     <div class="col-6">

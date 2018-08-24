@@ -21,7 +21,6 @@
               tempor incididunt ut labore e.</p>
               <hr>
               <p>Price: $19.99</p>
-              <p>Brand: Bench</p>
               <form action="add_cart.php" method="POST">
                 <div class="form-group">
                   <div class="col-sm-3">
