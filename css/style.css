@@ -61,3 +61,7 @@ h3 {
 ul.navbar-right {
 	margin-left: 150px;
 }
+
+.form-check {
+	border: 2px solid black;
+}

@@ -1,26 +1,31 @@
 <?php 
-function get_title() {
-  'Index';
-}
+	session_start();
+	$sort_array = $_SESSION['sort_array'];
+	$order_array = $_SESSION['order_array'];
 
-function get_content() { ?>
-  
+	if(isset($_GET['category'])) {
+		$_SESSION['category'] = $_GET['category'];
+	}
 
-<?php } ?>
-<?php require_once "template.php"; ?>
+	if(isset($_GET['sort'])) {
+		$_SESSION['sort'] = $_GET['sort'];
+	}
 
-<div class="header-wrapper"></div>
-<!-- left sidebar -->
 
-<?php require_once "partials/left_sidebar.php" ?>
-      
- <div class="col-6">
-       <h1 class="text-center display-4">Feature Products</h1>
-      <div class="row" id="productlist">
-           <?php 
-            $productsQuery = "SELECT * FROM products";
-            $products = mysqli_query($conn, $productsQuery);
-            foreach ($products as $product) {
+	if(isset($_SESSION['sort']) && isset($_GET['order'])) {
+		$_SESSION['order'] = $_GET['order'];
+	}
+
+
+	$filter = '';
+	$filter .= $_SESSION['category'] ? " WHERE category_id = ".$_SESSION['category'] : "";
+	$filter .= " ORDER BY ".$sort_array[$_SESSION]['sort']];
+	$filter .= $order_array[$_SESSION['order']] == 'descending' ? " DESC" : "";
+
+	require '../connection.php';
+	$sql = "SELECT * FROM products".$filter;
+	$products = mysqli_query($conn, $sql);
+	foreach ($products as $product) {
             extract($product); ?>
             
         <div class="col-md-3">
@@ -43,17 +48,5 @@ function get_content() { ?>
 
           <?php } ?>
 
-      </div>
-</div>
-<?php require_once 'partials/detailsmodal.php'; ?>
 
-    <!-- right sidebar  -->
-    <div class="col">Right Sidebar</div>
-  </div>
-</div>
-
-
-
-
-
-<?php require 'partials/footer.php'; ?>
+ ?>

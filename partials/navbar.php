@@ -13,28 +13,7 @@
    </a>
 <!-- end logo -->
   <div class="collapse navbar-collapse justify-content font-weight-bold" id="navbar">
-    <ul class="navbar-nav">
-      <?php 
-        $categoriesQuery = "SELECT * FROM categories";
-        $categories = mysqli_query($conn, $categoriesQuery);
-        foreach($categories as $category) {
-          extract($category); ?>
-
-           <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $name; ?></a>
-                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                  <?php   
-                    $subcategoriesQuery = "SELECT * FROM sub_categories WHERE category_id = $id";
-                    $subcategories = mysqli_query($conn, $subcategoriesQuery);
-                    foreach ($subcategories as $subcategory) {
-                      extract($subcategory); ?>
-                  
-                    <a class="dropdown-item" href="#"><?php   echo $name; ?></a>
-                     <?php   } ?>
-                </div>
-            </li>
-      <?php } ?> 
-    </ul> 
+   
     <ul class="navbar-nav navbar-right">
          <li class="nav-item">
           <a class="nav-link" href="#">Login</a>
