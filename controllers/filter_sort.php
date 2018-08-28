@@ -16,10 +16,9 @@
 		$_SESSION['order'] = $_GET['order'];
 	}
 
-
 	$filter = '';
-	$filter .= $_SESSION['category'] ? " WHERE category_id = ".$_SESSION['category'] : "";
-	$filter .= " ORDER BY ".$sort_array[$_SESSION]['sort']];
+	$filter .= $_SESSION['category'] ? " WHERE sub_category_id = ".$_SESSION['category'] : "";
+	$filter .= " ORDER BY ".$sort_array[$_SESSION['sort']];
 	$filter .= $order_array[$_SESSION['order']] == 'descending' ? " DESC" : "";
 
 	require '../connection.php';
@@ -27,26 +26,18 @@
 	$products = mysqli_query($conn, $sql);
 	foreach ($products as $product) {
             extract($product); ?>
-            
-        <div class="col-md-3">
-          <div class="row">
-       
-           <h5><?php echo $name; ?></h5>
-          </div>
-          <div class="row">
-            <img src="<?php echo $image; ?>" class="img-thumb">
-            </div>
-              <p class="list-price text-warning">List Price: <s><?php echo $list_price; ?></s></p>
-              <p class="price">Our price: <?php echo $price; ?></p>
-              <div class="row">
-              <form method="POST" action="controllers/add_to_cart.php?id=<?= $id ?>">
-              <input type="number" min="1" name="quantity">
-              <button class="btn btn-success">Add To Cart</button>
-            </form>
-          </div>
-         </div>     
-
-          <?php } ?>
-
-
- ?>
+       <div class="card">
+        <div class="view overlay zoom">
+            <h5><?php echo $name; ?></h5>
+           <img src="<?php echo "../$image"; ?>" class="img-thumb ">
+             <div class="mask flex-center waves-effect waves-light""></div>
+        </div>
+        <div class="card-body ">
+            <p class="list-price text-warning">List Price: <s><?php echo $list_price; ?></s></p>
+            <p class="price">Our price: <?php echo $price; ?></p>
+              <input type="number" min="1" name="quantity" id="productQuantity<?= $id ?>">
+              <button onclick="addToCart(<?php echo $id; ?>)" type="button" class="btn btn-success">Add To Cart</button>
+        </div>
+      </div>
+      <?php } ?>
+    </div>

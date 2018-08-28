@@ -1,17 +1,20 @@
-$('[name="category"]').click(function() {
-	$.get('controllers/filter_sort.php?category='+(this).val(), function(data) {
-		$('#productlist').html(data);
-	});
+$(document).ready(function() {
+
+
+
+
 });
 
-$('#sort').change(function() {
-	$.get('controllers/filter_sort.php?sort='+$(this).val()+'&order='+$('#order').val(), function(data) {
-		$('#productlist').html(data);
-	});
-});
-
-$('#order').change(function() {
-	$.get('controllers/filter_sort.php?order='+$(this).val()+'&sort='+$('#sort').val(), function(data) {
-		$('#productlist').html(data);
-	});
-});
+  function addToCart(productid) {
+    let id = productid;
+    let quantity = $('#productQuantity'+id).val();
+ 
+    $.ajax ({
+      url : "controllers/add_to_cart.php",
+      data : {"product_id": id,"product_quantity": quantity},
+      method :"POST",
+      success : function(data) {
+        $('#successMsg').html(data);
+      }
+    });
+  }

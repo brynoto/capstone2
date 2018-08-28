@@ -1,59 +1,61 @@
 <?php 
+session_start();
 function get_title() {
   'Index';
 }
 
-function get_content() { ?>
+function get_content() { 
+  global $conn; ?>
   
-
-<?php } ?>
-<?php require_once "template.php"; ?>
-
 <div class="header-wrapper"></div>
-<!-- left sidebar -->
 
 <?php require_once "partials/left_sidebar.php" ?>
-      
- <div class="col-6">
-       <h1 class="text-center display-4">Feature Products</h1>
-      <div class="row" id="productlist">
-           <?php 
-            $productsQuery = "SELECT * FROM products";
-            $products = mysqli_query($conn, $productsQuery);
-            foreach ($products as $product) {
-            extract($product); ?>
-            
-        <div class="col-md-3">
-          <div class="row">
-       
-           <h5><?php echo $name; ?></h5>
-          </div>
-          <div class="row">
-            <img src="<?php echo $image; ?>" class="img-thumb">
-            </div>
-              <p class="list-price text-warning">List Price: <s><?php echo $list_price; ?></s></p>
-              <p class="price">Our price: <?php echo $price; ?></p>
-              <div class="row">
-              <form method="POST" action="controllers/add_to_cart.php?id=<?= $id ?>">
-              <input type="number" min="1" name="quantity">
-              <button class="btn btn-success">Add To Cart</button>
-            </form>
-          </div>
-         </div>     
+    
+<div class="col-6">
+  <h1 class="text-center display-4" id="h1">Feature Products</h1>
+    <div class="row" id="productlist">
+       <?php
+            $sort_array = $_SESSION['sort_array'];
+            $order_array = $_SESSION['order_array'];
+            $filter = '';
+            if(isset($_GET['category'])) {
+              if ($_GET['category'] == 'on') {
+                
+              } else {
+                $filter .= $_GET['category'] ? " WHERE sub_category_id = ".$_GET['category'] : "";
+              }
+              
+            }
 
-          <?php } ?>
+            if(isset($_GET['sort']) && isset($_GET['order'])) {
+              $filter .= " ORDER BY ".$sort_array[$_GET['sort']];
+              $filter .= $order_array[$_GET['order']] == 'descending' ? " DESC" : "";
+            }
 
+    $productsQuery = "SELECT * FROM products".$filter;
+    $products = mysqli_query($conn, $productsQuery);
+    foreach ($products as $product) {
+    extract($product); ?>
+      <div class="card feature">
+        <div class="view overlay zoom">
+            <h5><?php echo $name; ?></h5>
+           <img src="<?php echo "../$image"; ?>" class="img-thumb ">
+             <div class="mask flex-center waves-effect waves-light""></div>
+        </div>
+        <div class="card-body ">
+            <p class="list-price text-warning">List Price: <s><?php echo $list_price; ?></s></p>
+            <p class="price">Our price: <?php echo $price; ?></p>
+              <input type="number" min="1" id="productQuantity<?= $id ?>">
+              <button onclick="addToCart(<?php echo $id; ?>)" type="button" class="btn btn-success">Add To Cart</button>
+        </div>
       </div>
-</div>
-<?php require_once 'partials/detailsmodal.php'; ?>
+      <?php } ?>
+    </div>
 
-    <!-- right sidebar  -->
-    <div class="col">Right Sidebar</div>
+</div>
+<?php require_once 'partials/right_sidebar.php'; ?>
   </div>
 </div>
 
-
-
-
-
-<?php require 'partials/footer.php'; ?>
+<?php } ?>
+<?php require_once "template.php"; ?>

@@ -5,7 +5,12 @@
 	color: black;
 
 }
-
+.feature {
+	width: 200px;
+	border: 2px solid black;
+	margin: 5px;
+	height: 100%;
+}
 .col-md-3 {
 	/*border: 2px solid black;*/
 	margin-bottom: 10px;
@@ -16,7 +21,6 @@
 	margin: auto;
 	width: auto;
 	height: 150px;
-	/*padding: 10px;*/
 	overflow: hidden;
 
 }
@@ -62,6 +66,8 @@ ul.navbar-right {
 	margin-left: 150px;
 }
 
-.form-check {
-	border: 2px solid black;
+.cart {
+	/*max-width: 300px;*/
+	/*max-height: 300px;*/
+	/*overflow: hidden;*/
 }

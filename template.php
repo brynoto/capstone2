@@ -14,6 +14,7 @@
 	<?php get_content(); ?>	
 
 
+<?php require 'partials/footer.php'; ?>
 <!-- SCRIPTS -->
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="js/popper.min.js"></script>
