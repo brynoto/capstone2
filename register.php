@@ -5,7 +5,7 @@ function get_title() {
 
 function get_content() { ?>
 
-
+<div class="row">
 <div class="container-fluid">
 	<h1 class="display-5">Register</h1>
 	<form id="registerform" action="controllers/register_endpoint.php" method="POST">
@@ -39,6 +39,7 @@ function get_content() { ?>
     </div>
 </div>
 </form>
+</div>
 </div>
 
 <script type="text/javascript">

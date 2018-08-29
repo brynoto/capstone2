@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php get_title(); ?></title>
-<?php require_once "connection.php" ?>	
+<?php require_once "controllers/connection.php" ?>	
 <?php require_once "partials/header.php" ?>		
 </head>
 <body>

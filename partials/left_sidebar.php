@@ -1,7 +1,7 @@
 <?php require "header.php"; ?>
 <div class="container-fluid">
   <form action="index.php#h1">
-    <button>Sort and Filter!</button>
+    <button  class="btn btn-outline-default waves-effect">Click to Sort and order</button>
     <div class="row">
       <div class="col">
         <div>
@@ -28,12 +28,11 @@
             <?php } ?>   
            </select>
        </div>  
-        <h2>Filter by:</h2>
         <span id="successMsg"></span>
-         <h3>Categories</h3>
+         <h3 class="font-weight-bold">Select Categories:</h3>
             <div class="custom-control custom-radio">
               <input type="radio" class="custom-control-input" id="defaultChecked2" name="category">
-              <label class="custom-control-label" for="defaultChecked2">All</label>
+              <label class="custom-control-label" for="defaultChecked2"><h4>All Products</h4></label>
             </div>
               <?php 
                 $categoriesQuery = "SELECT * FROM categories";
