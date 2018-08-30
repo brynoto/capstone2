@@ -5,42 +5,88 @@ function get_title() {
 
 function get_content() { ?>
 
-<div class="row">
-<div class="container-fluid">
-	<h1 class="display-5">Register</h1>
-	<form id="registerform" action="controllers/register_endpoint.php" method="POST">
-	<div class="card">
-    <div class="card-block">
-        <div class="form-header blue-gradient">
-            <h3>Register:</h3>
-        </div>
-        <div>
-            <i class="fa fa-user prefix"></i>
-            <label for="form3">Enter username</label>  
-            <input type="text" id="username" name="username" class="form-control">
-            <span></span>              
-        </div>
-        <div>
-            <i class="fa fa-lock prefix"></i>
-            <label for="form4">Your password</label> 
-            <input type="password" id="password" name= "password" class="form-control"> 
-             <span></span>         
-        </div>
-        <div>
-            <i class="fa fa-lock prefix">Confirm password</i>
-            <input type="password" id="confirmpassword" name="confirmpassword" class="form-control">
-            <span></span>
-                 
-        </div>
-        <div class="text-center">
-            <button id="registerBtn" class="btn btn-indigo" type="button">Sign up</button>
-   	        <hr>     
-   	    </div>
-    </div>
-</div>
-</form>
-</div>
-</div>
+
+<div class="row justify-content-center">
+	<div class="col-md-6">
+		<div class="card">
+			<header class="card-header">
+				<a href="" class="float-right btn btn-outline-primary mt-1">Log in</a>
+				<h4 class="card-title mt-2">Sign up</h4>
+			</header>
+			<article class="card-body">
+				<form  id="registerform" action="controllers/register_endpoint.php" method="POST">
+					<div class="form-row">
+						<div class="col form-group">
+							<label>Username </label>   
+						  	<input type="text" id="username" name="username" class="form-control">
+						  	<span></span>  
+						</div>
+						<div class="col form-group">
+							<label>Password</label>
+						  	<input type="password" id="password" name="password" class="form-control">
+						  	<span></span>  
+						</div> 
+						<div class="col form-group">
+							<label>Confirm Password</label>
+						  	<input type="password" id="confirmpassword" name="confirmpassword" class="form-control">
+						  	<span></span>  
+						</div> 
+					</div> 
+					<div class="form-row">
+						<div class="col form-group">
+							<label>First name </label>   
+						  	<input type="text" id="first_name" name="first_name" class="form-control">
+						</div> 
+						<div class="col form-group">
+							<label>Last name</label>
+						  	<input type="text" id="last_name" name="last_name" class="form-control">
+						</div>
+					</div> 
+					<div class="form-row">
+						<div class="col form-group">
+							<label>Email</label>   
+						  	<input type="email" id="email" name="email" class="form-control">
+						  	<small class="form-text text-muted">We'll never share your email with anyone else.</small>
+						</div> 
+						<div class="col form-group">
+							<label>Contact Number</label>
+						  	<input type="text" id="contact_number" name="contact_number" class="form-control">
+						</div>
+					</div> 
+						<div class="form-group">
+						<label>Address</label>
+						<input type="email" id="address" name="address" class="form-control">
+					</div>	
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+						  <label>City</label>
+						  <input type="text" class="form-control">
+						</div> 
+						<div class="form-group col-md-6">
+						  <label>Country</label>
+						  <select id="inputState" class="form-control">
+						    <option> Choose...</option>
+						      <option selected="">Philippines</option>	
+						      <option>Uzbekistan</option>
+						      <option>Russia</option>
+						      <option>United States</option>
+						      <option>India</option>
+						      <option>Afganistan</option>
+						  </select>
+						</div> 
+					</div> 
+				    <div class="text-center">
+				        <button id="registerBtn" class="btn btn-indigo" type="button">Sign up</button> 
+				    </div>      
+				    <small class="text-muted">By clicking the 'Sign Up' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>                                          
+				</form>
+			</article>
+				<div class="border-top card-body text-center">Have an account? <a href="index.php">Log In</a></div>
+		</div> 
+	</div> 
+</div> 
+
 
 <script type="text/javascript">
 	

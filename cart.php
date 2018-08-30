@@ -27,6 +27,7 @@ function get_content() {
 			<div class="row">	
 		<?php 
 		$total = 0;
+		$totalquantity = 0;
 			foreach ($_SESSION['cart'] as $id => $quantity) {
 				$cartQuery = "SELECT * FROM products WHERE id = $id";
 				$result = mysqli_query($conn, $cartQuery);
@@ -54,6 +55,7 @@ function get_content() {
 				       <button type="button" class="btn btn btn-dark-green waves-effect">Update</button>
 				    <p class="card-text mb-1">Subtotal Php:<span id=<?php echo "subtotal$id" ?>><?php
 							$subtotal = $product['price']*$quantity;
+							$totalquantity += $quantity;
 							$total += $subtotal;
 							echo $subtotal; ?></span></p>
 						
@@ -70,11 +72,17 @@ function get_content() {
 			</div> <!-- end col-9 -->
 
 			<div class="col-3">
+				<?php  
+				if (isset($_SESSION['logged_in_user'])) {
+					echo "Hello ".$_SESSION['logged_in_user']."<br>";
+					} else { ?>
+					<p>Welcome Guest, please login.</p>
+					<?php } ?>
 				<h1>Order Summary</h1>
-				<p>Quantity: <?php echo $quantity; ?></p>
+				<p>Quantity: <?php echo $totalquantity; ?></p>
 				<h5>Total: <span id="total"><?php echo $total ?></span></h5>
-				<button type="button" class="cart-empty btn btn btn-grey waves-effect">Empty Cart</button>
-				<button type="button" class="btn btn btn-dark-green waves-effect">Proceed to Checkout</button>
+				<button type="button" class="cart-empty btn btn-grey waves-effect">Empty Cart</button>
+				<a href = "controllers/checkout.php" button type="button" class="btn btn-primary waves-effect">Pay with paypal</a>
 			</div>
 	<?php else: ?>
 		<div class="col-12">
