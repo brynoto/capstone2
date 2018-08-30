@@ -33,6 +33,7 @@ $('.btn.remove-product').click(function(){
       method :"POST",
       success : function(data) {
         $('#successMsg').html(data);
+        
       }
     });
  }

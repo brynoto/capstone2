@@ -13,6 +13,7 @@ function get_content() {
 
     
 <div class="col-6">
+   <div id="successMsg"></div>
   <h1 class="text-center display-4" id="h1">Feature Products</h1>
     <div class="row" id="productlist">
        <?php

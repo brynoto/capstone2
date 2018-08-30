@@ -28,7 +28,7 @@
             <?php } ?>   
            </select>
        </div>  
-        <span id="successMsg"></span>
+
          <h3 class="font-weight-bold">Select Categories:</h3>
             <div class="custom-control custom-radio">
               <input type="radio" class="custom-control-input" id="defaultChecked2" name="category">
