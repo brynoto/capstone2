@@ -10,8 +10,8 @@ if(isset($_SESSION['cart'][$id])) {
 	$_SESSION['cart'][$id] = $quantity;
 }
 
-echo '  <div class="alert alert-warning" role="alert" id="successMsg">
-  Your item has been added to cart!
+echo '  <div class="alert alert-warning" role="alert" id="successMsg" href="../cart.php">
+  Your item has been added to cart, check it here!
 </div>';
 
 

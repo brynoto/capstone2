@@ -73,8 +73,8 @@ function get_content() {
 
 			<div class="col-3">
 				<?php  
-				if (isset($_SESSION['logged_in_user'])) {
-					echo "Hello ".$_SESSION['logged_in_user']."<br>";
+				if (isset($_SESSION['logged_in_user']['id'])) {
+					echo "Hello ".$_SESSION['logged_in_user']['username']."<br>";
 					} else { ?>
 					<p>Welcome Guest, please login.</p>
 					<?php } ?>

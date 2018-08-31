@@ -38,8 +38,9 @@ try {
 	print_r($data);
 	die();
 }
+$user_id = $_SESSION['logged_in_user']['id'];
 
-$sql = "INSERT INTO orders VALUES(null,2,'$transaction_code','$address',null,null,1,2)";
+$sql = "INSERT INTO orders VALUES(null,$user_id,'$transaction_code','$address',null,null,1,2)";
 mysqli_query($conn,$sql) or die(mysqli_error($conn));
 $order_id = mysqli_insert_id($conn);
 
@@ -51,7 +52,8 @@ foreach($_SESSION['cart'] as $id => $quantity) {
 unset($_SESSION['cart']);
 $_SESSION['success_message'] = "Payment Successful!";
 
-header('location: ../index.php');
+
+// header('location: ../index.php');
 
 
 ?>
