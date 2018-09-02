@@ -36,7 +36,7 @@ if (isset($_SESSION['logged_in_user']['id'])) {
 
     <!-- Register -->
     <p>Not a member?
-        <a href="">Register</a>
+        <a href="register.php">Register</a>
     </p>
 
 			<button class="btn btn-primary" name="submit">Login</button>

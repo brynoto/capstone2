@@ -45,14 +45,14 @@ function get_content() {
 					  </a>
 				  </div>
 					</div>		
-			   	 <div class="card-body cart2 success-color rounded-bottom">
+			   	 <div class="card-body card-action cart2 success-color rounded-bottom">
 				    <!-- Title -->
 					<h5 class="card-title"><?php echo $product['name']; ?></h5>
 					<hr class="hr-light">
 					    <!-- Text -->
 					<p class="card-text mb-1">Php:<?php echo number_format($product['price'],2); ?></p>
-				    <p class="card-text mb-1">Quantity: <?php echo $quantity; ?></p>
-				       <button type="button" class="btn btn btn-dark-green waves-effect">Update</button>
+				    <p>Quantity: <span id=<?php echo "quantity$id" ?>><?php echo $quantity ?></span><input type="number" min="1" class="browser-default" placeholder="Update quantity here."> <a class="cart-update" data-id=<?php echo $product['id'] ?>><button type="button" class="cart-update btn btn-green waves-effect">Cart Update</button></a></p>	         
+				       
 				    <p class="card-text mb-1">Subtotal Php:<span id=<?php echo "subtotal$id" ?>><?php
 							$subtotal = $product['price']*$quantity;
 							$totalquantity += $quantity;
@@ -95,5 +95,29 @@ function get_content() {
 
 <?php } ?>
 
+<script type="text/javascript">
+	
+$('.cart-update').click(function() {
+	const id = $(this).data("id");
+	const quantity = Number($(this).prev().val());
+	if (quantity <= 0 || !Number.isInteger(quantity)) {
+		alert('Please enter a positive integer.')
+	} else {
+		$.post('controllers/cart_update.php',
+			{ id: id, quantity: quantity },
+			function(data) {
+				M.toast({html: 'Updated cart successfully!'});
+				// console.log(data);
+				const price = $('#price'+id).html();
+				const prevQuantity = $('#quantity'+id).html();
+				const prevTotal = $('#total').html();
+				$('#quantity'+id).html(quantity);
+				$('#subtotal'+id).html(quantity*price);
+				$('#total').html(prevTotal - price*prevQuantity + price*quantity);
+				updateCartBadge();
+		});
+	}
+});
+</script>
 
 <?php require_once "template.php"; ?>

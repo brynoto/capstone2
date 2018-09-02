@@ -33,11 +33,6 @@ function get_content() {
 		extract($order); 
  ?>
 
-
-
-
-
- 
     <tr>
       <td scope="col"><?php echo $id; ?></td>
       <td scope="col"><?php echo $user_id; ?></td>
@@ -56,17 +51,9 @@ function get_content() {
  </tbody>
 </table>
 
-
-
-
-
 <?php } ?>
 
  
-
-
-
-
 
 <?php require_once "template.php"; ?>
 
