@@ -53,7 +53,7 @@ unset($_SESSION['cart']);
 $_SESSION['success_message'] = "Payment Successful!";
 
 
-// header('location: ../index.php');
+header('location: ../index.php');
 
 
 ?>

@@ -33,6 +33,10 @@ $sql= "INSERT INTO products (
 
 $result = mysqli_query($conn, $sql)or die(mysqli_error($conn));	
 
+$_SESSION['success_add_product'] = "Product added successfully!";
+header ('location: ../index.php');
+
+
 
 
  ?>

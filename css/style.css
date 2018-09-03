@@ -5,6 +5,12 @@
 	color: black;
 
 }
+
+html, body {
+	width: 100vw;
+	overflow-x: hidden;
+}
+
 .feature {
 	width: 200px;
 	border: 2px solid black;
@@ -55,10 +61,28 @@ h5 {
 
 }
 
+.col-md-8 {
+	margin-top: 20px;
+}
+
 .nav-link {
 	color: black;
 }
 
+#side_pic {
+	width: 350px;
+	height: auto;
+}
+
+#cart_head {
+	background-size: cover;
+	width: 90vw;
+	margin: auto;
+	margin-left: 80px;
+	margin-bottom: 50px;
+	height: 600px;
+	background-position: center;
+}
 h3 {
 	color: black;
 }

@@ -42,15 +42,40 @@ function get_content() {
       <td scope="col"><?php echo $date_created; ?></td>
       <td scope="col"><?php echo $status_id; ?></td>
       <td scope="col"><?php echo $payment_method_id; ?></td>
-      <td scope="col"><button>View details</button></td>
+      <td scope="col">
+        <!-- Button trigger modal -->
+        <button data-id=<?php echo $id ?> type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewOrderDetails">
+          View details
+        </button>
+      </td>
  
     </tr>
  
 
-	<?php	 } ?>
+  <?php  } ?>
  </tbody>
 </table>
 
+<!-- Modal -->
+<div class="modal fade" id="viewOrderDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Order details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-body-order-details">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 <?php } ?>
 
  

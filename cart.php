@@ -17,6 +17,7 @@ function get_content() {
 			}
 		}
 		if (isset($_SESSION['cart'])) { ?>
+
 		<?php } ?>
 
 <div class="row">
@@ -74,9 +75,9 @@ function get_content() {
 			<div class="col-3">
 				<?php  
 				if (isset($_SESSION['logged_in_user']['id'])) {
-					echo "Hello ".$_SESSION['logged_in_user']['username']."<br>";
+					echo '<blockquote class="blockquote bq-success"><h1 class="bq-title">Hello '.$_SESSION['logged_in_user']['username'].'<br></h1></blockquote>';
 					} else { ?>
-					<p>Welcome Guest, please login.</p>
+					<a href="index.php"><p>Welcome Guest, please click me to login.</p></a>
 					<?php } ?>
 				<h1>Order Summary</h1>
 				<p>Quantity: <?php echo $totalquantity; ?></p>
@@ -85,8 +86,11 @@ function get_content() {
 				<a href = "controllers/checkout.php" button type="button" class="btn btn-primary waves-effect">Pay with paypal</a>
 			</div>
 	<?php else: ?>
+		<div class="row">
 		<div class="col-12">
-			<p>Cart is empty.</p>
+			<a href="index.php"><h2 class="display-5 text-center">Oops. Your cart is empty! Click me to shop more!</h2></a>
+			<img src="img/cart_head.png" id="cart_head">
+		</div>
 		</div>
 	<?php endif ?>
 
@@ -94,30 +98,19 @@ function get_content() {
 
 
 <?php } ?>
-
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-	
-$('.cart-update').click(function() {
-	const id = $(this).data("id");
-	const quantity = Number($(this).prev().val());
-	if (quantity <= 0 || !Number.isInteger(quantity)) {
-		alert('Please enter a positive integer.')
-	} else {
-		$.post('controllers/cart_update.php',
-			{ id: id, quantity: quantity },
-			function(data) {
-				M.toast({html: 'Updated cart successfully!'});
-				// console.log(data);
-				const price = $('#price'+id).html();
-				const prevQuantity = $('#quantity'+id).html();
-				const prevTotal = $('#total').html();
-				$('#quantity'+id).html(quantity);
-				$('#subtotal'+id).html(quantity*price);
-				$('#total').html(prevTotal - price*prevQuantity + price*quantity);
-				updateCartBadge();
-		});
-	}
-});
+
+
+// 	const updateCartBadge = function() {
+// 	$.ajax({
+// 		url: 'controllers/update_cart_badge.php',
+// 		success : function(data) {
+// 			$('#badge-items').html(data);
+// 		}
+// 	});
+// };
+
 </script>
 
 <?php require_once "template.php"; ?>

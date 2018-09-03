@@ -14,56 +14,47 @@ function get_content() {
 
     if (isset($_SESSION['logged_in_user']) && $_SESSION['logged_in_user']['role_id'] == 1) {
 
-      echo "Hello ".$_SESSION['logged_in_user']['username']."<br>"; ?>
+      echo '<blockquote class="blockquote bq-success"><h1 class="bq-title">Hello '.$_SESSION['logged_in_user']['username'].'<br></h1></blockquote>'; ?>
+         <?php   
+            if (isset($_SESSION['success_add_product']))
+                {
+                  echo "success";
+                  unset($_SESSION['success_add_product']);
+                }
 
-        <h2>Add Item</h2>
-        <form method="POST" id="form" name="form" enctype="multipart/form-data" action="controllers/add_product.php">
-          <div class="form-group">
-            <label>Product Name</label>
-            <input type="text" name="prodName" id="prodName">
-          </div>
-
-          <div class="form-group">
-            <label>Product Description</label>
-            <textarea name="prodDesc" id="prodDesc"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label>Product Price</label>
-            <input type="text" name="prodPrice" id="prodPrice">
-          </div>
-
-          <div class="form-group">
-            <label>List Price</label>
-            <input type="text" name="listPrice" id="listPrice">
-          </div>
-
-          
-          <div class="form-group">
-            <label>Product Sub-Category</label>
-            <select name="subCategory" id="subCategory">
-
-              <?php     
-              $subcategories_qry = "SELECT * FROM sub_categories";
-              $subcategories = mysqli_query($conn, $subcategories_qry);
-              foreach ($subcategories as $sub_category) {
-                extract($sub_category);
-              echo "<option value='$id'>$name</option>";
-            } ?>
+           ?>
+        <form method="post" id="form" name="form" enctype="multipart/form-data" action="controllers/add_product.php" class="text-center border border-light p-5">
+            <p class="h4 mb-4">Add Item</p>
+               <label>Product Name</label>
+            <input type="text" name="prodName" id="prodName" class="form-control mb-4" placeholder="Name">
+                <label>Product Description</label>
+             <textarea class="form-control rounded-0" name="prodDesc" id="prodDesc" rows="3" placeholder="Enter description here"></textarea>
+                <label>Product Price</label>
+            <input type="number" name="prodPrice" id="prodPrice" class="form-control mb-4" placeholder="Price">
+               <label>List Price</label>
+            <input type="number" name="listPrice" id="listPrice" class="form-control mb-4" placeholder="List Price">
+               <label>Product Sub-Category</label>
+            <select name="subCategory" id="subCategory" class="browser-default custom-select mb-4">
+                 <?php     
+                      $subcategories_qry = "SELECT * FROM sub_categories";
+                      $subcategories = mysqli_query($conn, $subcategories_qry);
+                      foreach ($subcategories as $sub_category) {
+                        extract($sub_category);
+                      echo "<option value='$id'>$name</option>";
+                    } ?>
             </select>
-          </div>
-
-          <div class="form-group">
-            <label>Product Image</label>
-            <input type="file" name="prodImage" id="prodImage">
-          </div>
-
-          <div class="form-group">
-            <button type="submit" id="saveButton">Save</button>
-          </div>
-        </form>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+              </div>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" name="prodImage" id="prodImage" aria-describedby="inputGroupFileAddon01">
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+              </div>
+            </div>
+              <button class="btn btn-info btn-block" type="submit" id="saveButton">Save</button>
+       </form>
       </div>
-
       <div class="col-md-8">
         <h2>Product List</h2>
         <div class="table-responsive">
@@ -87,24 +78,22 @@ function get_content() {
               <tr>
                 <td><?php echo $name; ?></td>
                 <td><?php echo $price; ?></td>
-                <td>
-                  <?php 
-                    
-
-                   ?>
-
-                </td>
+                <td><?php echo $category_id; ?>      </td>
                 <td><?php echo $description; ?></td>
                 <td>img<?php echo "$image"; ?></td>
                 <td>
-                  <a href="">Edit</a>
-                  <a href="">Delete</a>
+
+                  <div class="text-center">
+                      <a data-id=<?php echo $id ?> href="" class="btn btn-default btn-rounded mb-1 admin-btn-edit-item" data-toggle="modal" data-target="#modalContactForm">Edit Item</a>
+                  </div>
+                  <a data-id=<?php echo $id ?> href="" class="btn btn btn-warning btn-rounded mb-1 admin-btn-delete-item">Delete</a>
                 </td>
               </tr>
 
               <?php } ?>
             </tbody>
           </table>
+          <?php require 'partials/admin_edit_modal.php'; ?>
         </div>
       </div>
     </div>  
@@ -119,8 +108,13 @@ function get_content() {
 
           
       <div class="col-6">
-
          <div id="successMsg"></div>
+         <?php 
+          if(isset($_SESSION['success_message'])) {
+      echo "<span class='sucess_message'>".$_SESSION['success_message']."</span>";
+      unset($_SESSION['success_message']);
+          } ?>
+
         <h1 class="text-center display-4" id="h1">Featured Products</h1>
           <div class="row" id="productlist">
              <?php

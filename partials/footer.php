@@ -37,8 +37,8 @@
     <!-- Footer Elements -->
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2018 Copyright:
-      <a href="https://mdbootstrap.com/bootstrap-tutorial/"> MDBootstrap.com</a>
+    <div class="footer-copyright text-center py-3">© Design and Developed by: Bryan Noto 2018 
+      <a href="https://mdbootstrap.com/bootstrap-tutorial/">Disclaimer: All images credit to Dota 2 Intl.</a>
     </div>
     <!-- Copyright -->
 

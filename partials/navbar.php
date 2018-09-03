@@ -7,17 +7,20 @@
 
 
 <ul class="navbar-nav right hide-on-med-and-down">
-      <?php if (!isset($logged_in) || (isset($logged_in) && $logged_in['role_id'] != 1)): ?>
+
+
+ 
+      <?php if (!isset($_SESSION['logged_in_user']) || (isset($_SESSION['logged_in_user']) && $_SESSION['logged_in_user']['role_id'] != 1)): ?>
         <li class="nav-item"><a  class="nav-link text-white" href="cart.php">Cart<span id="badge-items">
 
         <?php 
         if (isset($_SESSION['cart'])) {
           $count = array_sum($_SESSION['cart']); ?>
-          <span class="new badge" data-badge-caption=<?php echo $count == 1 ? "item" : "items"; ?>><?php echo $count; ?></span><?php
+          <span class="badge amber darken-2" data-badge-caption=<?php echo $count == 1 ? "item" : "items"; ?>><?php echo $count; ?></span><?php
         } ?></span></a></li>
 
         <?php else: ?>
-        <li><a href="orders.php">Orders</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="order.php">Orders</a></li>
         <?php endif ?>
         </ul> 
        

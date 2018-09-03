@@ -1,7 +1,7 @@
 <?php 
 
 require '../vendor/autoload.php';
-define('SITE_URL', 'http://localhost/capstone2');
+define('SITE_URL', 'https://peenoise-dota-2-store.000webhostapp.com/');
 
 $paypal = new \PayPal\Rest\ApiContext(
 		new \PayPal\Auth\OAuthTokenCredential('AbHe2la2HMGHvz_ueGfmDeyDBXV3OCHFxEUu_7kb6J6P76BgI0ocCo9rGuikT7wn2eJqkwHQWrx3DUmK',

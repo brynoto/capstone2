@@ -9,7 +9,7 @@ if(isset($_SESSION['error_message'])) {
 
 <?php  
 if (isset($_SESSION['logged_in_user']['id'])) {
-	echo "Hello ".$_SESSION['logged_in_user']['username']."<br>";
+      echo '<blockquote class="blockquote bq-success"><h1 class="bq-title">Hello '.$_SESSION['logged_in_user']['username'].'<br></h1></blockquote><img src="img/side-pic.png" id="side_pic">';
 	} else { ?>
 	<p>Welcome Guest</p>
 		<form action="controllers/authenticate.php" method="POST" class="text-center border border-light p-5">
